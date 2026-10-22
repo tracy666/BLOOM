@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "paper_baselines": [
+    "Autoformer",
+    "Crossformer",
+    "DLinear",
+    "FEDformer",
+    "FiLM",
+    "FreTS",
+    "Informer",
+    "LightTS",
+    "Mamba",
+    "Nonstationary_Transformer",
+    "PAttn",
+    "PatchTST",
+    "Reformer",
+    "SegRNN",
+    "TSMixer",
+    "TiDE",
+    "TimeFilter",
+    "TimeXer",
+    "TimesNet",
+    "Transformer",
+    "WPMixer",
+    "iTransformer"
+  ],
+  "shared": {
+    "SEQ_LEN": 8,
+    "TRANS_LABEL_LEN": 4,
+    "PRED_LEN": 1,
+    "SEED": 42,
+    "DATASET_RANDOM_SEED": 42,
+    "SPLIT_METHOD": "random_proportional_split",
+    "TRAIN_RATIO": 0.7,
+    "VALID_RATIO": 0.1,
+    "EXECUTION_MODE": "train_eval",
+    "EVAL_SPLIT": "test",
+    "SAVE_CHECKPOINTS": true,
+    "FP16": false,
+    "NUM_WORKERS": 0,
+    "DETERMINISTIC_CUDNN": true,
+    "TORCH_MATMUL_PRECISION": "high",
+    "TRANS_FOUNDATION_MODELS": [],
+    "FOUNDATION_CHECKPOINT_SPECS": [],
+    "FOUNDATION_RUN_MODES": [],
+    "SAVE_CSV": true,
+    "PCC_BACKEND": "fast",
+    "PCC_NAN_POLICY": "zero"
+  },
+  "baseline": {
+    "TRANS_BATCH": 32768,
+    "TRANS_EPOCHS": 100,
+    "TRANS_LR": 0.0001,
+    "TRANS_D_MODEL": 64,
+    "TRANS_GRAD_CLIP": 1.0,
+    "TRANS_STOP_METRIC": "val_loss",
+    "TRANS_EARLY_STOPPING_PATIENCE": 5,
+    "TRANS_EARLY_STOPPING_MIN_DELTA": 0.0,
+    "TRANS_LOAD_BEST_AT_END": true,
+    "TRANS_USE_CELLTYPE_CONDITIONING": false,
+    "TRANS_RETRIEVAL_ENABLED": false,
+    "TRANS_EVAL_BOTH_WEIGHTINGS": true
+  },
+  "bloom": {
+    "FM_VARIANTS": [
+      "FM_context_gaussian_hist1_ctype_soft_traj1"
+    ],
+    "FM_BIO_ABLATIONS": [
+      "bio7_adaptive_full"
+    ],
+    "FM_BATCH": 128,
+    "FM_EPOCHS": 100,
+    "FM_LR": 0.0001,
+    "FM_WEIGHT_DECAY": 0.0001,
+    "FM_GRAD_CLIP": 1.0,
+    "FM_STOP_METRIC": "val_loss",
+    "FM_EARLY_STOPPING_PATIENCE": 5,
+    "FM_EARLY_STOPPING_MIN_DELTA": 0.0001,
+    "FM_EARLY_STOPPING_START_EPOCH": 25,
+    "FM_LOAD_BEST_AT_END": true,
+    "MAX_SOURCE_CELLS_PER_DAY": 2048,
+    "CELL_ENCODER_HIDDEN": 256,
+    "DAY_ENCODER_HIDDEN": 256,
+    "TEMPORAL_HIDDEN": 256,
+    "TYPE_EMB_DIM": 32,
+    "FM_TYPE_EMB_INIT_STD": 0.0,
+    "TRAJ_HINT_HIDDEN": 128,
+    "FLOW_CONTEXT_DIM": 256,
+    "FLOW_HIDDEN_DIM": 256,
+    "FLOW_BASE_MODES": [
+      "context_gaussian"
+    ],
+    "FLOW_SIGMA": 1.0,
+    "FLOW_NUM_STEPS": 8,
+    "FLOW_NUM_SAMPLES": 4,
+    "FLOW_LOSS_WEIGHT": 1.0,
+    "AUX_POINT_LOSS_WEIGHT": 0.05,
+    "TRAJ_SOFT_WEIGHT": 0.0,
+    "BASE_LOGVAR_MIN": -8.0,
+    "BASE_LOGVAR_MAX": 3.0,
+    "FM_RESIDUAL_MODE": "none",
+    "FM_PREDICTION_MODE": "flow_sample",
+    "FM_POINT_BLEND_WEIGHT": 0.7,
+    "FM_PRIOR_GATE_MODE": "conditional",
+    "FM_PRIOR_GATE_INIT": 0.1,
+    "FM_PRIOR_DROPOUT": 0.1,
+    "FM_PRIOR_GATE_L1_WEIGHT": 0.0,
+    "FM_PRIOR_WARMUP_EPOCHS": 5,
+    "FM_PRIOR_RAMP_EPOCHS": 10,
+    "FM_CONTINUOUS_TIME_WEIGHT": 0.1,
+    "FM_CONTINUOUS_TIME_MIN_FRACTION": 0.05,
+    "FM_CONTINUOUS_TIME_MAX_FRACTION": 0.95,
+    "FM_CONTEXT_GENE_DROPOUT": 0.0,
+    "FM_CONTEXT_CELL_DROPOUT": 0.0,
+    "FM_COMPOSITION_LOSS_WEIGHT": 0.05,
+    "FM_EVAL_READOUTS": [
+      "flow_sample",
+      "point_head",
+      "blend"
+    ],
+    "FM_BLEND_WEIGHTS": [
+      0.5,
+      0.7,
+      0.85,
+      1.0
+    ],
+    "FM_PRIMARY_READOUT": "point_head",
+    "FM_SAVE_BEST_PER_READOUT": true,
+    "CURATED_GRAPH_SOURCE_COL": "source",
+    "CURATED_GRAPH_TARGET_COL": "target",
+    "CURATED_GRAPH_WEIGHT_COL": "weight",
+    "CURATED_GRAPH_NODE_COL": "node",
+    "CURATED_GRAPH_CELL_MAP_CELL_ID_COL": "cell_id",
+    "CURATED_GRAPH_CELL_MAP_NODE_COL": "graph_node",
+    "CURATED_GRAPH_OBS_CELL_ID_COL": "",
+    "CURATED_GRAPH_MIN_CELL_COVERAGE": 0.8,
+    "CURATED_GRAPH_REG_WEIGHT": 0.0001,
+    "DRIVER_NODE_COL": "node",
+    "DRIVER_GENE_COL": "gene",
+    "DRIVER_SCORE_COL": "score",
+    "GRN_SOURCE_COL": "TF",
+    "GRN_TARGET_COL": "target",
+    "GRN_WEIGHT_COL": "importance",
+    "GRN_TOPK_PER_TARGET": 32,
+    "GRN_EXTERNAL_TF_MODE": "target_gate",
+    "BIO_PRIOR_VALIDATE_ONLY": false,
+    "TRAJECTORY_SUBSAMPLE_MODE": "none",
+    "TRAJECTORY_SUBSAMPLE_FRACTION": 1.0,
+    "FM_SCALE_EXPERIMENT": "none",
+    "FM_MAX_TRAIN_STEPS_PER_EPOCH": 0
+  },
+  "datasets": {
+    "prenatal": {
+      "label": "Mouse gastrula-to-birth",
+      "author_genes": 70,
+      "native": {
+        "TIME_COL": "time",
+        "CELLTYPE_COL": "major_trajectory",
+        "BIO_ACTUAL_TIME_COL": "day",
+        "BIO_HIERARCHY_COLS": [
+          "celltype_update",
+          "neurons_sub_clustering",
+          "lateral_plate_mesoderm_sub_clustering"
+        ],
+        "BIO_ANATOMY_COLS": [
+          "major_trajectory"
+        ],
+        "CURATED_GRAPH_NODE_OBS_COLS": [
+          "celltype_update"
+        ],
+        "BIO_NUMERIC_CONTEXT_COLS": [
+          "somite_count"
+        ]
+      }
+    },
+    "cortex": {
+      "label": "Developing mouse visual cortex",
+      "author_genes": 100,
+      "native": {
+        "TIME_COL": "time",
+        "CELLTYPE_COL": "class_label",
+        "BIO_ACTUAL_TIME_COL": "Age",
+        "BIO_HIERARCHY_COLS": [
+          "subclass_label",
+          "cluster_label",
+          "subcluster_label"
+        ],
+        "BIO_ANATOMY_COLS": [
+          "roi"
+        ],
+        "CURATED_GRAPH_NODE_OBS_COLS": [
+          "cluster_label",
+          "age_bin"
+        ]
+      }
+    },
+    "sted": {
+      "label": "STED-EC",
+      "author_genes": 135,
+      "native": {
+        "TIME_COL": "day",
+        "CELLTYPE_COL": "label",
+        "BIO_ACTUAL_TIME_COL": "day",
+        "BIO_HIERARCHY_COLS": [
+          "Gja5+_label"
+        ],
+        "BIO_ANATOMY_COLS": [
+          "mouse_part_summary"
+        ],
+        "CURATED_GRAPH_NODE_OBS_COLS": [
+          "label",
+          "embryonic_period"
+        ]
+      }
+    }
+  },
+  "provenance": {
+    "baseline": "Supplied forecasting training-reference launchers: d_model64, batch32768, epochs100. Remaining settings retain the source forecasting defaults.",
+    "bloom": "Supplied final STED adaptive-prior launchers for directional BLOOM. Same release recipe is exposed for all three datasets with dataset-specific columns from their supplied prior launchers. Exact selected checkpoint/run mapping must be supplied with the later checkpoint release."
+  }
+}
