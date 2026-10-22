@@ -56,3 +56,4 @@ graph TD
 | [`src/bloom/models/bloom.py`](src/bloom/models/bloom.py) | Both BLOOM configurations and their shared generative components |
 | [`src/bloom/models/transformer.py`](src/bloom/models/transformer.py) | Registry, configuration factory and common interface for the 22 baselines |
 | [`src/bloom/training/`](src/bloom/training) | Portable training CLI and retained checkpoint-compatible training routines |
+| [`scripts/train/`](scripts/train) | Exactly 24 model-specific `.sh` launchers, defaulting to author-derived genes |
