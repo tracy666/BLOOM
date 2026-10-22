@@ -53,3 +53,6 @@ graph TD
 | Location | Purpose |
 | --- | --- |
 | [`src/bloom/preprocessing/`](src/bloom/preprocessing) | H5AD export, temporal transport, pseudo-trajectories, GRN and author-prior preparation |
+| [`src/bloom/models/bloom.py`](src/bloom/models/bloom.py) | Both BLOOM configurations and their shared generative components |
+| [`src/bloom/models/transformer.py`](src/bloom/models/transformer.py) | Registry, configuration factory and common interface for the 22 baselines |
+| [`src/bloom/training/`](src/bloom/training) | Portable training CLI and retained checkpoint-compatible training routines |
