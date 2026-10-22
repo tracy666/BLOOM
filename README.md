@@ -22,3 +22,10 @@ Conditional generation of developmental cell populations from ordered expression
 ## Overview
 
 BLOOM models developmental transcriptomic populations at requested stages. It combines temporal population context, inferred cell correspondences, and developmental, anatomical, programme and regulatory knowledge in a conditional flow-matching model.
+
+The two BLOOM configurations live together in **[`src/bloom/models/bloom.py`](src/bloom/models/bloom.py)**:
+
+- **Unidirectional BLOOM:** one trained developmental direction per checkpoint; forward and reverse models can be trained with the same launcher.
+- **Bidirectional BLOOM:** a shared model with developmental-direction conditioning.
+
+The paper's 22 forecasting baselines use one shared factory and conditioning interface in **[`src/bloom/models/transformer.py`](src/bloom/models/transformer.py)**. Their original architectures are obtained through a separate, documented Time-Series-Library [THUML/Time-Series-Library](https://github.com/thuml/Time-Series-Library).
