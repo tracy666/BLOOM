@@ -59,3 +59,60 @@ graph TD
 | [`scripts/train/`](scripts/train) | Exactly 24 model-specific `.sh` launchers, defaulting to author-derived genes |
 | [`src/bloom/evaluation/`](src/bloom/evaluation) | Checkpoint export, developmental queries, numerical metrics and data-contract validation |
 | [`src/bloom/figures/`](src/bloom/figures) | Four manuscript figure groups and benchmark radar rendering |
+
+## Installation
+
+### 1. Create an environment
+
+Run commands from the repository root. Use Python 3.12 for the tested release environment. The core package supports Python 3.10+, while optional workflows also depend on their selected third-party versions.
+
+```bash
+git clone https://github.com/tracy666/BLOOM.git
+cd BLOOM
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+```
+
+Install the PyTorch build appropriate for your CPU or CUDA environment, then install the workflows you need:
+
+```bash
+python -m pip install -e ".[train,analysis,preprocess]"
+export BLOOM_PYTHON="$(pwd)/.venv/bin/python"
+
+python -m bloom --help
+python -m bloom.training --help
+```
+
+The same workflows are also available as `bloom preprocess`, `bloom train`, `bloom evaluate` and `bloom figures`. Help and recipe inspection do not load the expression matrices or start training.
+
+### 2. Add optional preparation dependencies
+
+Temporal optimal transport and GRN inference have separate dependency groups:
+
+```bash
+python -m pip install -e ".[ot]"
+```
+
+For pySCENIC/Arboreto, use the dedicated environment described in [the preprocessing guide](docs/preprocessing.md), especially when retaining an existing working GRN environment. The `grn` extra lists the required Python tools. The prenatal R graph converter additionally needs R and its source-resource dependencies.
+
+### 3. Prepare the baseline implementations
+
+```bash
+bash scripts/setup_timeseries_library.sh --python "$BLOOM_PYTHON"
+export BLOOM_TSL_ROOT="$(pwd)/external/Time-Series-Library"
+```
+
+This obtains the documented compatibility checkout of the original upstream library. Use `--skip-install` to fetch source without changing an existing environment. A compatible existing checkout can instead be supplied with `--tsl-root` or `BLOOM_TSL_ROOT`.
+
+The historical upstream commit used for the manuscript training runs was not included in the source archive. The release's tested compatibility pin is recorded explicitly in [the baseline dependency guide](docs/transformer_dependency.md). Mamba additionally needs its compatible `mamba_ssm`/CUDA environment; the other 21 model interfaces were exercised on CPU.
+
+## Datasets
+
+All three manuscript datasets are mouse. Download their expression data, annotations and relevant publication resources from the original providers.
+
+| Public key | Dataset | Author-derived genes | Data access |
+| --- | --- | ---: | --- |
+| `prenatal` | Mouse gastrula-to-birth atlas, Qiu et al., Nature 2024 | 70 | [Atlas portal](https://omg.gs.washington.edu/) · [GSE228590](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE228590) · [Publication](https://doi.org/10.1038/s41586-024-07069-w) |
+| `cortex` | Developing mouse visual cortex, Gao et al., Nature 2025 | 100 | [Allen data access](https://alleninstitute.github.io/abc_atlas_access/descriptions/Dev-Mouse-Vis-Cortex-10X.html) · [Publication](https://doi.org/10.1038/s41586-025-09644-1) |
+| `sted` | STED-EC endothelial developmental atlas, Lin et al., Cell 2026 | 135 | [OMIX007369](https://ngdc.cncb.ac.cn/omix/release/OMIX007369) · [Publication](https://doi.org/10.1016/j.cell.2026.01.002) |
