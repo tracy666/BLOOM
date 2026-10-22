@@ -39,11 +39,3 @@ DATASET=cortex FM_TEMPORAL_DIRECTION=reverse \
 ```
 
 Bidirectional BLOOM uses one shared model with direction conditioning. The general trainer retains its directional sampling and biological-stage split rules. Baseline defaults retain the adopted forecasting configuration; they are not replaced by BLOOM's model settings.
-
-## Update an existing checkout
-
-Replace the entire existing `src/bloom/training/` directory with this `training/` directory. Do not merge the folders, because merging would leave the obsolete version-named files in place. The package command and training launchers then continue to use the same public interface.
-
-Use the accompanying complete repository update when running checkpoint export and evaluation: its adapters have also been updated to initialize the general trainer. Replacing only this folder updates training, but leaves older external adapters referring to the removed implementation files.
-
-Historical version labels may remain in checkpoint or prediction-file metadata to identify existing saved formats. They are compatibility fields, not parallel trainer implementations or model choices.
