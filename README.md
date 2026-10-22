@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/bloom_icon.pdf" width="150" alt="BLOOM flower icon">
+<img src="assets/bloom_icon.jpg" width="150" alt="BLOOM flower icon">
 
 # BLOOM
 
