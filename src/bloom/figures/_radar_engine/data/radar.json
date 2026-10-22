@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "core_plan": {
+    "schema_version": 1,
+    "title": "BLOOM timepoint prediction benchmark",
+    "selection_status": "exploratory_after_inspecting_results",
+    "metrics": [
+      {
+        "name": "mean_day_pcc_gene",
+        "label": "Mean-day gene PCC",
+        "direction": "higher",
+        "route": "recomputed",
+        "aspect": "gene association",
+        "weight": 1
+      },
+      {
+        "name": "rmse",
+        "label": "RMSE",
+        "direction": "lower",
+        "route": "recomputed",
+        "aspect": "expression magnitude",
+        "weight": 1
+      },
+      {
+        "name": "mmd_u",
+        "label": "MMD-U",
+        "direction": "lower",
+        "route": "population_sampled",
+        "aspect": "distribution",
+        "weight": 1
+      },
+      {
+        "name": "sliced_wasserstein",
+        "label": "Sliced Wasserstein",
+        "direction": "lower",
+        "route": "population_sampled",
+        "aspect": "distribution",
+        "weight": 1
+      }
+    ],
+    "expected_models": 23,
+    "allow_descriptive_different_targets": true,
+    "aspect_weights": {
+      "gene association": 1,
+      "expression magnitude": 1,
+      "distribution": 1
+    },
+    "display_ranges": {},
+    "dataset_labels": {
+      "big": "Mouse gastrula-to-birth",
+      "small": "Developing mouse visual cortex",
+      "sted": "STED-EC"
+    },
+    "display_note": "Marker area uses per-metric display bounds; overall uses separate empirical all-model minmax and equal aspect weights.",
+    "show_coverage_in_figure": false
+  },
+  "candidate_metrics": [
+    {
+      "name": "mean_day_pcc_gene",
+      "label": "Mean-day gene PCC",
+      "route": "recomputed",
+      "direction": "higher",
+      "aspect": "gene variation across cells"
+    },
+    {
+      "name": "mean_day_pcc_cell",
+      "label": "Mean-day cell PCC",
+      "route": "recomputed",
+      "direction": "higher",
+      "aspect": "cell expression profile"
+    },
+    {
+      "name": "mean_cell_pcc",
+      "label": "Pooled cell PCC",
+      "route": "recomputed",
+      "direction": "higher",
+      "aspect": "cell expression profile"
+    },
+    {
+      "name": "mean_gene_pcc",
+      "label": "Pooled gene PCC",
+      "route": "recomputed",
+      "direction": "higher",
+      "aspect": "gene variation across cells"
+    },
+    {
+      "name": "median_cell_pcc",
+      "label": "Median cell PCC",
+      "route": "recomputed",
+      "direction": "higher",
+      "aspect": "cell expression profile"
+    },
+    {
+      "name": "median_gene_pcc",
+      "label": "Median gene PCC",
+      "route": "recomputed",
+      "direction": "higher",
+      "aspect": "gene variation across cells"
+    },
+    {
+      "name": "mean_row_cosine",
+      "label": "Cell-profile cosine",
+      "route": "recomputed",
+      "direction": "higher",
+      "aspect": "uncentered cell profile"
+    },
+    {
+      "name": "mean_day_pseudobulk_pcc",
+      "label": "Mean-day pseudobulk PCC",
+      "route": "recomputed",
+      "direction": "higher",
+      "aspect": "population mean expression"
+    },
+    {
+      "name": "time_gene_pseudobulk_pcc",
+      "label": "Time-gene pseudobulk PCC",
+      "route": "recomputed",
+      "direction": "higher",
+      "aspect": "population mean expression"
+    },
+    {
+      "name": "pseudobulk_pcc",
+      "label": "Pooled pseudobulk PCC",
+      "route": "recomputed",
+      "direction": "higher",
+      "aspect": "population mean expression"
+    },
+    {
+      "name": "pseudobulk_spearman",
+      "label": "Pooled pseudobulk Spearman",
+      "route": "recomputed",
+      "direction": "higher",
+      "aspect": "population mean expression"
+    },
+    {
+      "name": "pseudobulk_cosine",
+      "label": "Pooled pseudobulk cosine",
+      "route": "recomputed",
+      "direction": "higher",
+      "aspect": "uncentered population mean"
+    },
+    {
+      "name": "pseudobulk_mae",
+      "label": "Pooled pseudobulk MAE",
+      "route": "recomputed",
+      "direction": "lower",
+      "aspect": "population mean error"
+    },
+    {
+      "name": "pseudobulk_rmse",
+      "label": "Pooled pseudobulk RMSE",
+      "route": "recomputed",
+      "direction": "lower",
+      "aspect": "population mean error"
+    },
+    {
+      "name": "rmse",
+      "label": "RMSE",
+      "route": "recomputed",
+      "direction": "lower",
+      "aspect": "absolute expression error"
+    },
+    {
+      "name": "mse",
+      "label": "MSE",
+      "route": "recomputed",
+      "direction": "lower",
+      "aspect": "absolute expression error"
+    },
+    {
+      "name": "mae",
+      "label": "MAE",
+      "route": "recomputed",
+      "direction": "lower",
+      "aspect": "absolute expression error"
+    },
+    {
+      "name": "r2",
+      "label": "Global R\u00b2",
+      "route": "recomputed",
+      "direction": "higher",
+      "aspect": "explained squared error"
+    },
+    {
+      "name": "mmd_u",
+      "label": "MMD-U",
+      "route": "population_sampled",
+      "direction": "lower",
+      "aspect": "joint expression distribution"
+    },
+    {
+      "name": "sliced_wasserstein",
+      "label": "Sliced Wasserstein",
+      "route": "population_sampled",
+      "direction": "lower",
+      "aspect": "joint expression distribution"
+    },
+    {
+      "name": "covariance_edge_pcc",
+      "label": "Covariance-edge PCC",
+      "route": "population_sampled",
+      "direction": "higher",
+      "aspect": "gene co-variation"
+    },
+    {
+      "name": "covariance_relative_frobenius",
+      "label": "Relative covariance error",
+      "route": "population_sampled",
+      "direction": "lower",
+      "aspect": "gene co-variation"
+    },
+    {
+      "name": "variance_pcc",
+      "label": "Full-row variance PCC",
+      "route": "recomputed",
+      "direction": "higher",
+      "aspect": "gene variability"
+    },
+    {
+      "name": "variance_rmse",
+      "label": "Full-row variance RMSE",
+      "route": "recomputed",
+      "direction": "lower",
+      "aspect": "gene variability error"
+    },
+    {
+      "name": "variogram",
+      "label": "Variogram error",
+      "route": "population_sampled",
+      "direction": "lower",
+      "aspect": "gene-pair distribution"
+    },
+    {
+      "name": "detection_fraction_mae",
+      "label": "Saved-positive fraction MAE",
+      "route": "recomputed",
+      "direction": "lower",
+      "aspect": "saved positive-value fraction"
+    },
+    {
+      "name": "detection_fraction_rmse",
+      "label": "Saved-positive fraction RMSE",
+      "route": "recomputed",
+      "direction": "lower",
+      "aspect": "saved positive-value fraction"
+    }
+  ],
+  "datasets": {
+    "big": {
+      "label": "Mouse gastrula-to-birth",
+      "fill": "#FBE3D6",
+      "border": "#80340E",
+      "text": "#80340E",
+      "accent": "#C04F15"
+    },
+    "small": {
+      "label": "Developing mouse visual cortex",
+      "fill": "#DDE9F7",
+      "border": "#163E64",
+      "text": "#163E64",
+      "accent": "#215F9B"
+    },
+    "sted": {
+      "label": "STED-EC",
+      "fill": "#C1F1C8",
+      "border": "#0D3512",
+      "text": "#0D3512",
+      "accent": "#12501B"
+    }
+  },
+  "display_ranges": {},
+  "extended_selection": {
+    "exclude_severe": true,
+    "severe_rank_at_least": 19,
+    "severe_quality_at_most": 0.25,
+    "exclude_metrics": [],
+    "include_core_average": true
+  },
+  "model_colors": {
+    "BLOOM": "#714366"
+  },
+  "dpi": 300,
+  "show_scale_ticks": true,
+  "legend": true,
+  "show_coverage_in_figure": false,
+  "respect_metric_domain": true
+}
