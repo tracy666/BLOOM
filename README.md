@@ -28,4 +28,4 @@ The two BLOOM configurations live together in **[`src/bloom/models/bloom.py`](sr
 - **Unidirectional BLOOM:** one trained developmental direction per checkpoint; forward and reverse models can be trained with the same launcher.
 - **Bidirectional BLOOM:** a shared model with developmental-direction conditioning.
 
-The paper's 22 forecasting baselines use one shared factory and conditioning interface in **[`src/bloom/models/transformer.py`](src/bloom/models/transformer.py)**. Their original architectures are obtained through a separate, documented Time-Series-Library **[THUML/Time-Series-Library](https://github.com/thuml/Time-Series-Library)**.
+The paper's 22 forecasting baselines use one shared factory and conditioning interface in **[`src/bloom/models/transformer.py`](src/bloom/models/transformer.py)**. Their original architectures are obtained through a separate, documented Time-Series-Library **[`THUML/Time-Series-Library`](https://github.com/thuml/Time-Series-Library)**.
