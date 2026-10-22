@@ -33,11 +33,11 @@ The paper's 22 forecasting baselines use one shared factory and conditioning int
 ## Workflow
 
 ```mermaid
-flowchart TD
-    A[Annotated H5AD and publication resources] --> B[Expression export and temporal transport]
-    B --> C[Pseudo-trajectories and biological priors]
-    C --> D[BLOOM or forecasting baseline training]
-    D --> E[Developmental queries, numerical evaluation and figures]
+graph TD
+    A["Annotated H5AD and publication resources"] --> B["Expression export and temporal transport"]
+    B --> C["Pseudo-trajectories and biological priors"]
+    C --> D["BLOOM or forecasting baseline training"]
+    D --> E["Developmental queries, numerical evaluation and figures"]
 ```
 
 | Manuscript stage | Repository workflow | Main entry point |
